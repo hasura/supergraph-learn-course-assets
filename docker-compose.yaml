@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db_product_management:
+    image: postgres:latest
+    volumes:
+      - ./db/product_management:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: product_management
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+
+  db_user_experience:
+    image: postgres:latest
+    volumes:
+      - ./db/user_experience:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: user_experience
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5433:5432'
+
+  db_payment_processing:
+    image: postgres:latest
+    volumes:
+      - ./db/payment_processing:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: payment_processing
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5434:5432'
+
+  db_fullfillment_services:
+    image: postgres:latest
+    volumes:
+      - ./db/fullfillment_services:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: fullfillment_services
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5435:5432'
